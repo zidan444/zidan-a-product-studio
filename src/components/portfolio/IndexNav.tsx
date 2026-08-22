@@ -3,7 +3,7 @@ import { sections } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
 export function IndexNav() {
-  const [active, setActive] = useState(sections[0].id);
+  const [active, setActive] = useState(sections[0]?.id ?? "intro");
 
   useEffect(() => {
     const nodes = sections
@@ -74,7 +74,8 @@ export function IndexNav() {
 
 function MobileIndex({ active }: { active: string }) {
   const [open, setOpen] = useState(false);
-  const current = sections.find((s) => s.id === active) ?? sections[0];
+  const current = sections.find((s) => s.id === active) ??
+    sections[0] ?? { id: "intro", index: "01", label: "Intro" };
 
   return (
     <div className="fixed inset-x-0 bottom-4 z-40 flex justify-center px-4 lg:hidden">
