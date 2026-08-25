@@ -18,9 +18,9 @@ export function ProjectMedia({
   alt: string;
   width: number;
   height: number;
-  className?: string;
-  imgClassName?: string;
-  cursorLabel?: string;
+  className?: string | undefined;
+  imgClassName?: string | undefined;
+  cursorLabel?: string | undefined;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
