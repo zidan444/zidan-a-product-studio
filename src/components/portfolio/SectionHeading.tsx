@@ -9,7 +9,7 @@ export function SectionHeading({
 }: {
   index: string;
   label: string;
-  className?: string;
+  className?: string | undefined;
 }) {
   return (
     <Reveal className={cn("flex items-center gap-4", className)}>
@@ -27,7 +27,7 @@ export function Section({
 }: {
   id: string;
   children: ReactNode;
-  className?: string;
+  className?: string | undefined;
 }) {
   return (
     <section

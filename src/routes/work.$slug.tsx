@@ -180,7 +180,7 @@ function Chapter({
   step: string;
   label: string;
   children: React.ReactNode;
-  className?: string;
+  className?: string | undefined;
 }) {
   return (
     <Reveal className={className}>

@@ -32,9 +32,9 @@ export function useInView<T extends HTMLElement>(threshold = 0.18) {
 
 type RevealProps = {
   children: ReactNode;
-  className?: string;
-  delay?: number;
-  as?: ElementType;
+  className?: string | undefined;
+  delay?: number | undefined;
+  as?: ElementType | undefined;
 };
 
 export function Reveal({ children, className, delay = 0, as: Tag = "div" }: RevealProps) {
@@ -58,8 +58,8 @@ export function MaskedLines({
   lineClassName,
 }: {
   lines: string[];
-  className?: string;
-  lineClassName?: string;
+  className?: string | undefined;
+  lineClassName?: string | undefined;
 }) {
   const { ref, visible } = useInView<HTMLDivElement>(0.25);
 
