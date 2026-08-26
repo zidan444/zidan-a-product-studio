@@ -290,3 +290,41 @@
     transform: none;
   }
 }
+
+/* ---------- Mobile motion budget ---------- */
+/* Phones and coarse pointers get shorter, cheaper transitions so scrolling
+   stays smooth; heavy ambient loops are switched off entirely. */
+@media (max-width: 767px), (hover: none) and (pointer: coarse) {
+  .reveal {
+    transform: translateY(16px);
+    transition-duration: 0.5s;
+    will-change: auto;
+  }
+
+  .mask-line > span {
+    transition-duration: 0.6s;
+  }
+
+  .atmosphere {
+    animation: none;
+    transform: scale(1.06);
+  }
+
+  .tick {
+    animation-duration: 3.4s;
+  }
+
+  * {
+    background-attachment: scroll !important;
+  }
+}
+
+html {
+  overscroll-behavior-y: none;
+}
+
+@media (max-width: 767px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+}
