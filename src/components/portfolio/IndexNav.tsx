@@ -1,28 +1,69 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { sections } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
-export function IndexNav() {
+/**
+ * Scroll-position driven section tracking: the active tab is the last section
+ * whose top has passed the reading line (35% down the viewport). At the very
+ * bottom of the page the final section always wins, so short sections such as
+ * Contact can still become active.
+ */
+function useActiveSection() {
   const [active, setActive] = useState(sections[0]?.id ?? "intro");
+  // Suppress scroll tracking briefly while a click-triggered smooth scroll runs.
+  const lockRef = useRef(0);
+
+  const compute = useCallback(() => {
+    if (Date.now() < lockRef.current) return;
+    const line = window.scrollY + window.innerHeight * 0.35;
+    const atBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 2;
+
+    let current = sections[0]?.id ?? "intro";
+    for (const s of sections) {
+      const el = document.getElementById(s.id);
+      if (!el) continue;
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      if (top <= line) current = s.id;
+    }
+    if (atBottom) {
+      const last = sections[sections.length - 1];
+      if (last) current = last.id;
+    }
+    setActive((prev) => (prev === current ? prev : current));
+  }, []);
 
   useEffect(() => {
-    const nodes = sections
-      .map((s) => document.getElementById(s.id))
-      .filter((n): n is HTMLElement => Boolean(n));
-    if (!nodes.length || typeof IntersectionObserver === "undefined") return;
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        compute();
+      });
+    };
+    compute();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [compute]);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(visible.target.id);
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.2, 1] },
-    );
-    nodes.forEach((n) => observer.observe(n));
-    return () => observer.disconnect();
+  const select = useCallback((id: string) => {
+    setActive(id);
+    lockRef.current = Date.now() + 800;
   }, []);
+
+  return { active, select };
+}
+
+export function IndexNav() {
+  const { active, select } = useActiveSection();
+
 
   return (
     <>
