@@ -32,7 +32,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("shell scroll-mt-16 py-24 md:py-36 lg:py-44", className)}
+      className={cn("shell section-y scroll-mt-20", className)}
     >
       {children}
     </section>

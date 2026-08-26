@@ -9,7 +9,7 @@ export function Work() {
   const others = projects.filter((p) => p.kind !== "professional");
 
   return (
-    <Section id="work" className="pt-8 md:pt-12">
+    <Section id="work" className="pt-0 md:pt-0">
       <SectionHeading index="02" label="Selected Work" />
 
       {featured && (
@@ -85,11 +85,11 @@ export function Work() {
         </article>
       )}
 
-      <div className="mt-28 md:mt-44">
+      <div className="mt-24 md:mt-36 lg:mt-44">
         <Reveal className="hairline-t pt-4">
           <p className="meta">Also built — personal projects</p>
         </Reveal>
-        <ul className="mt-8 grid gap-12 md:grid-cols-2 md:gap-10">
+        <ul className="mt-8 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:gap-12">
           {others.map((project, i) => (
             <li key={project.slug}>
               <Reveal delay={i * 120}>

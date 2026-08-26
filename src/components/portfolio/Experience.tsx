@@ -42,7 +42,7 @@ export function Experience() {
                 <span className="meta text-primary">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="text-lg leading-snug md:text-2xl">{item}</span>
+                <span className="text-base leading-snug sm:text-lg md:text-2xl">{item}</span>
               </Reveal>
             </li>
           ))}

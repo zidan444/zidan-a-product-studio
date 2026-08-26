@@ -4,7 +4,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="shell hairline-t py-8 pb-28 lg:pb-10">
+    <footer className="shell hairline-t py-8 pb-[calc(6.5rem+env(safe-area-inset-bottom))] lg:pb-10">
       <div className="grid gap-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
         <div className="min-w-0">
           <p className="meta text-foreground">Zidan Ahammed</p>
