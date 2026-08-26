@@ -5,12 +5,12 @@ export function Intro() {
   return (
     <Section id="intro">
       <SectionHeading index="01" label="Intro" />
-      <div className="mt-14 grid gap-12 md:mt-24 md:grid-cols-12">
+      <div className="mt-12 grid gap-10 md:mt-20 md:grid-cols-12 lg:gap-12">
         <MaskedLines
-          className="display-lg uppercase md:col-span-8"
+          className="display-lg uppercase md:col-span-7 lg:col-span-8"
           lines={["Full-stack", "developer building", "real products", "across web & mobile."]}
         />
-        <div className="space-y-6 md:col-span-4 md:pt-3">
+        <div className="space-y-6 md:col-span-5 md:pt-3 lg:col-span-4">
           <Reveal delay={120}>
             <p className="text-base leading-relaxed text-muted-foreground">
               I work on both sides of the product — building interfaces that feel

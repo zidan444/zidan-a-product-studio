@@ -12,12 +12,12 @@ export function Process() {
   return (
     <Section id="process">
       <SectionHeading index="05" label="How I Work" />
-      <ol className="mt-14 grid gap-px md:mt-20 md:grid-cols-4">
+      <ol className="mt-12 grid gap-8 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 md:mt-20 lg:grid-cols-4 lg:gap-x-6">
         {steps.map((step, i) => (
           <li key={step.n}>
             <Reveal
               delay={i * 100}
-              className="h-full border-t border-border pt-5 md:pr-8"
+              className="h-full border-t border-border pt-5 lg:pr-8"
             >
               <p className="meta text-primary">{step.n}</p>
               <h3 className="display-md mt-4 uppercase">{step.title}</h3>

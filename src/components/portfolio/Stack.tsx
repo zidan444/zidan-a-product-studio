@@ -7,12 +7,12 @@ export function Stack() {
     <Section id="stack">
       <SectionHeading index="04" label="Stack" />
 
-      <div className="mt-14 space-y-14 md:mt-24 md:space-y-20">
+      <div className="mt-12 space-y-12 md:mt-20 md:space-y-16 lg:space-y-20">
         {stackGroups.map((group, gi) => (
           <Reveal key={group.label} delay={gi * 80}>
             <div className="grid gap-5 border-t border-border pt-5 md:grid-cols-12">
               <p className="meta md:col-span-3">{group.label}</p>
-              <ul className="flex flex-wrap items-baseline gap-x-8 gap-y-2 md:col-span-9">
+              <ul className="flex flex-wrap items-baseline gap-x-5 gap-y-2 sm:gap-x-8 md:col-span-9">
                 {group.items.map((item) => (
                   <li
                     key={item}

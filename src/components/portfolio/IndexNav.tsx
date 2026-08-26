@@ -78,10 +78,10 @@ function MobileIndex({ active }: { active: string }) {
     sections[0] ?? { id: "intro", index: "01", label: "Intro" };
 
   return (
-    <div className="fixed inset-x-0 bottom-4 z-40 flex justify-center px-4 lg:hidden">
-      <div className="w-full max-w-sm border border-border bg-background/85 backdrop-blur-xl">
+    <div className="fixed inset-x-0 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-40 flex justify-center px-3 sm:px-4 lg:hidden">
+      <div className="w-full max-w-md border border-border bg-background/85 backdrop-blur-xl">
         {open && (
-          <ul className="grid grid-cols-2 gap-px border-b border-border">
+          <ul className="grid grid-cols-2 gap-px border-b border-border sm:grid-cols-3">
             {sections.map((s) => (
               <li key={s.id}>
                 <a
