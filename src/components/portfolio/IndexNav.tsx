@@ -77,41 +77,91 @@ function MobileIndex({ active }: { active: string }) {
   const current = sections.find((s) => s.id === active) ??
     sections[0] ?? { id: "intro", index: "01", label: "Intro" };
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
-    <div className="fixed inset-x-0 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-40 flex justify-center px-3 sm:px-4 lg:hidden">
-      <div className="w-full max-w-md border border-border bg-background/85 backdrop-blur-xl">
-        {open && (
-          <ul className="grid grid-cols-2 gap-px border-b border-border sm:grid-cols-3">
-            {sections.map((s) => (
-              <li key={s.id}>
-                <a
-                  href={`#${s.id}`}
-                  onClick={() => setOpen(false)}
-                  className={cn(
-                    "flex min-h-11 items-center gap-2 px-4 py-3",
-                    active === s.id ? "text-foreground" : "text-muted-foreground",
-                  )}
-                >
-                  <span className="meta text-primary">{s.index}</span>
-                  <span className="meta text-current">{s.label}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+    <>
+      {/* Tap-away backdrop */}
+      <button
+        type="button"
+        tabIndex={-1}
+        aria-hidden="true"
+        onClick={() => setOpen(false)}
+        className={cn(
+          "fixed inset-0 z-30 bg-background/70 transition-opacity duration-200 lg:hidden",
+          open ? "opacity-100" : "pointer-events-none opacity-0",
         )}
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          className="flex min-h-12 w-full items-center justify-between gap-3 px-4"
-        >
-          <span className="flex min-w-0 items-center gap-2">
-            <span className="meta text-primary">{current.index}</span>
-            <span className="meta truncate text-foreground">{current.label}</span>
-          </span>
-          <span className="meta shrink-0">{open ? "Close" : "Index"}</span>
-        </button>
+      />
+
+      <div className="fixed inset-x-0 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-40 flex justify-center px-3 sm:px-4 lg:hidden">
+        <div className="w-full max-w-md border border-border bg-background/90 backdrop-blur-xl">
+          <div
+            id="mobile-index-panel"
+            className={cn(
+              "grid overflow-hidden transition-[grid-template-rows] duration-200 ease-out",
+              open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+            )}
+          >
+            <ul
+              className={cn(
+                "grid min-h-0 grid-cols-2 border-b border-border sm:grid-cols-3",
+                !open && "invisible",
+              )}
+            >
+              {sections.map((s) => (
+                <li key={s.id}>
+                  <a
+                    href={`#${s.id}`}
+                    tabIndex={open ? undefined : -1}
+                    onClick={() => setOpen(false)}
+                    aria-current={active === s.id ? "true" : undefined}
+                    className={cn(
+                      "flex min-h-14 touch-manipulation items-center gap-2 px-4 py-3 select-none active:bg-foreground/10",
+                      active === s.id ? "text-foreground" : "text-muted-foreground",
+                    )}
+                  >
+                    <span className="meta text-primary">{s.index}</span>
+                    <span className="meta truncate text-current">{s.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-index-panel"
+            aria-label={open ? "Close section index" : "Open section index"}
+            className="flex min-h-14 w-full touch-manipulation items-center justify-between gap-3 px-4 select-none active:bg-foreground/10"
+          >
+            <span className="flex min-w-0 items-center gap-2">
+              <span className="meta text-primary">{current.index}</span>
+              <span className="meta truncate text-foreground">{current.label}</span>
+            </span>
+            <span className="meta flex shrink-0 items-center gap-2">
+              {open ? "Close" : "Index"}
+              <span
+                aria-hidden="true"
+                className={cn(
+                  "inline-block transition-transform duration-200",
+                  open ? "rotate-180" : "rotate-0",
+                )}
+              >
+                ↑
+              </span>
+            </span>
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
+
