@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import heroAtmosphere from "@/assets/hero-atmosphere.jpg";
 import { MaskedLines } from "./Reveal";
+import { useLightMotion } from "@/hooks/use-light-motion";
 
 export function Hero() {
   const [offset, setOffset] = useState(0);
+  const lightMotion = useLightMotion();
 
   useEffect(() => {
-    const reduce =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
+    // Phones / coarse pointers: skip the scroll-driven parallax entirely.
+    if (lightMotion) {
+      setOffset(0);
+      return;
+    }
     let frame = 0;
     const onScroll = () => {
       cancelAnimationFrame(frame);
@@ -20,7 +23,7 @@ export function Hero() {
       window.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [lightMotion]);
 
   return (
     <header className="relative flex min-h-[100svh] flex-col overflow-hidden">
@@ -32,7 +35,11 @@ export function Hero() {
           height={1200}
           fetchPriority="high"
           className="atmosphere h-full w-full object-cover opacity-70"
-          style={{ transform: `translate3d(0, ${offset * 0.14}px, 0)` }}
+          style={
+            lightMotion
+              ? undefined
+              : { transform: `translate3d(0, ${offset * 0.14}px, 0)` }
+          }
         />
         <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_70%_20%,transparent,var(--background)_78%)]" />
         <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background to-transparent" />
