@@ -156,35 +156,39 @@
 @utility display-xl {
   font-family: var(--font-display);
   font-weight: 500;
-  line-height: 0.86;
+  line-height: 0.88;
   letter-spacing: -0.045em;
-  font-size: clamp(2.75rem, 12.5vw, 13rem);
+  font-size: clamp(2.5rem, 11.5vw, 13rem);
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
 
 @utility display-lg {
   font-family: var(--font-display);
   font-weight: 500;
-  line-height: 0.92;
+  line-height: 0.94;
   letter-spacing: -0.038em;
-  font-size: clamp(2.1rem, 7.5vw, 6.5rem);
+  font-size: clamp(1.9rem, 7vw, 6.5rem);
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
 
 @utility display-md {
   font-family: var(--font-display);
   font-weight: 500;
-  line-height: 1.02;
+  line-height: 1.04;
   letter-spacing: -0.03em;
-  font-size: clamp(1.6rem, 4vw, 3.25rem);
+  font-size: clamp(1.45rem, 1rem + 2.2vw, 3.25rem);
+  overflow-wrap: break-word;
 }
 
 @utility meta {
   font-family: var(--font-mono);
-  font-size: clamp(0.6rem, 0.75vw, 0.7rem);
-  letter-spacing: 0.22em;
+  font-size: clamp(0.6rem, 0.5rem + 0.25vw, 0.72rem);
+  letter-spacing: clamp(0.12em, 0.06em + 0.35vw, 0.22em);
   text-transform: uppercase;
   color: var(--color-muted-foreground);
+  overflow-wrap: break-word;
 }
 
 @utility hairline-t {
@@ -198,21 +202,15 @@
 @utility shell {
   width: 100%;
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-inline: clamp(1.15rem, 0.4rem + 3.2vw, 4.5rem);
   max-width: 96rem;
 }
 
-@media (min-width: 768px) {
-  .shell {
-    padding-inline: 2.5rem;
-  }
+/* Fluid vertical rhythm between sections */
+@utility section-y {
+  padding-block: clamp(4.5rem, 2rem + 9vw, 11rem);
 }
 
-@media (min-width: 1280px) {
-  .shell {
-    padding-inline: 4.5rem;
-  }
-}
 
 /* ---------- Motion ---------- */
 
