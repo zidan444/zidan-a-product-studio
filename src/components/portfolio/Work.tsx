@@ -9,7 +9,7 @@ export function Work() {
   const others = projects.filter((p) => p.kind !== "professional");
 
   return (
-    <Section id="work" className="pt-0 md:pt-0">
+    <Section id="work">
       <SectionHeading index="02" label="Selected Work" />
 
       {featured && (
