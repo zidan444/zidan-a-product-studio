@@ -1,11 +1,51 @@
 import { useEffect, useState } from "react";
 import heroAtmosphere from "@/assets/hero-atmosphere.jpg";
-import { MaskedLines } from "./Reveal";
 import { useLightMotion } from "@/hooks/use-light-motion";
 
-export function Hero() {
-  const [offset, setOffset] = useState(0);
-  const lightMotion = useLightMotion();
+/**
+ * Load-time per-letter entrance for the hero headline. Letters rise from
+ * behind an overflow mask with a stagger; tighter stagger on light-motion
+ * devices. Renders a real <h1> for document outline / SEO.
+ */
+function HeroTitle({
+  lines,
+  className,
+  lightMotion,
+}: {
+  lines: string[];
+  className?: string | undefined;
+  lightMotion: boolean;
+}) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setVisible(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  let letterIndex = 0;
+  const step = lightMotion ? 12 : 34;
+
+  return (
+    <h1 data-visible={visible ? "true" : "false"} className={className}>
+      {lines.map((line, li) => (
+        <span key={li} className="hero-line">
+          {Array.from(line).map((ch, ci) => (
+            <span
+              key={ci}
+              aria-hidden="true"
+              className="hero-letter"
+              style={{ transitionDelay: `${120 + letterIndex++ * step}ms` }}
+            >
+              {ch === " " ? "\u00A0" : ch}
+            </span>
+          ))}
+          <span className="sr-only">{line} </span>
+        </span>
+      ))}
+    </h1>
+  );
+}
 
   useEffect(() => {
     // Phones / coarse pointers: skip the scroll-driven parallax entirely.
