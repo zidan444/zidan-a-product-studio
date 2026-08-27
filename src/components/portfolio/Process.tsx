@@ -20,7 +20,9 @@ export function Process() {
               className="h-full border-t border-border pt-5 lg:pr-8"
             >
               <p className="meta text-primary">{step.n}</p>
-              <h3 className="display-md mt-4 uppercase">{step.title}</h3>
+              <h3 className="mt-4 font-display text-[clamp(1.3rem,0.85rem+1.6vw,2.4rem)] leading-[1.05] font-medium tracking-[-0.03em] uppercase">
+                {step.title}
+              </h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {step.body}
               </p>
