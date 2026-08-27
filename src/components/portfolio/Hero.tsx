@@ -98,9 +98,10 @@ export function Hero() {
         </div>
 
         <div className="flex flex-1 flex-col justify-center py-16 md:py-20">
-          <MaskedLines
+          <HeroTitle
             className="display-xl uppercase"
             lines={["I build", "digital", "products."]}
+            lightMotion={lightMotion}
           />
           <div className="mt-8 grid gap-8 md:mt-14 md:grid-cols-12 md:items-end">
             <p className="max-w-md text-balance text-base leading-relaxed text-muted-foreground md:col-span-5 md:col-start-1">
