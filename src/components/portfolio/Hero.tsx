@@ -47,7 +47,10 @@ function HeroTitle({
   );
 }
 
-  useEffect(() => {
+export function Hero() {
+  const [offset, setOffset] = useState(0);
+  const lightMotion = useLightMotion();
+
     // Phones / coarse pointers: skip the scroll-driven parallax entirely.
     if (lightMotion) {
       setOffset(0);
