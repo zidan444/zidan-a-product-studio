@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Cursor } from "@/components/portfolio/Cursor";
 import { IndexNav } from "@/components/portfolio/IndexNav";
 import { Hero } from "@/components/portfolio/Hero";
 import { Intro } from "@/components/portfolio/Intro";
@@ -31,7 +30,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
-      <Cursor />
       <div className="grain-overlay" aria-hidden="true" />
       <a
         href="#intro"
