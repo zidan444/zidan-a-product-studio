@@ -62,6 +62,7 @@ export function Contact() {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
+                download={"download" in link ? link.download : undefined}
                 className="group grid min-h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-5 transition-colors hover:text-primary md:grid-cols-[10rem_minmax(0,1fr)_auto] md:py-7"
               >
                 <span className="meta">{link.label}</span>
