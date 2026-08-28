@@ -10,7 +10,7 @@ const githubHandle = contact.github.split("/").pop() ?? "";
 const externalLinks = [
   { label: "LinkedIn", value: `in/${linkedinHandle}`, href: contact.linkedin },
   { label: "GitHub", value: `@${githubHandle}`, href: contact.github },
-  { label: "Resume", value: "Download PDF", href: contact.resume },
+  { label: "Resume", value: "Download PDF", href: contact.resume, download: "zidan-ahammed-resume.pdf" },
 ];
 
 export function Contact() {
@@ -62,6 +62,7 @@ export function Contact() {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
+                download={"download" in link ? link.download : undefined}
                 className="group grid min-h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-5 transition-colors hover:text-primary md:grid-cols-[10rem_minmax(0,1fr)_auto] md:py-7"
               >
                 <span className="meta">{link.label}</span>
