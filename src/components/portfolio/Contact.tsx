@@ -10,7 +10,7 @@ const githubHandle = contact.github.split("/").pop() ?? "";
 const externalLinks = [
   { label: "LinkedIn", value: `in/${linkedinHandle}`, href: contact.linkedin },
   { label: "GitHub", value: `@${githubHandle}`, href: contact.github },
-  { label: "Resume", value: "Download PDF", href: contact.resume },
+  { label: "Resume", value: "Download PDF", href: contact.resume, download: "zidan-ahammed-resume.pdf" },
 ];
 
 export function Contact() {
