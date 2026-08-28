@@ -2,6 +2,7 @@ import gscopePrimary from "@/assets/gscope-primary.jpg";
 import gscopeSecondary from "@/assets/gscope-secondary.jpg";
 import projectBlog from "@/assets/project-blog.jpg";
 import projectChat from "@/assets/project-chat.jpg";
+import resumeAsset from "@/assets/resume.pdf.asset.json";
 
 export type Project = {
   slug: string;
