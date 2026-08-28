@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiResumeRouteImport } from './routes/api/resume'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiResumeRoute = ApiResumeRouteImport.update({
+  id: '/api/resume',
+  path: '/api/resume',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkSlugRoute = WorkSlugRouteImport.update({
@@ -25,27 +31,31 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/resume': typeof ApiResumeRoute
   '/work/$slug': typeof WorkSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/resume': typeof ApiResumeRoute
   '/work/$slug': typeof WorkSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/resume': typeof ApiResumeRoute
   '/work/$slug': typeof WorkSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/work/$slug'
+  fullPaths: '/' | '/api/resume' | '/work/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/work/$slug'
-  id: '__root__' | '/' | '/work/$slug'
+  to: '/' | '/api/resume' | '/work/$slug'
+  id: '__root__' | '/' | '/api/resume' | '/work/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiResumeRoute: typeof ApiResumeRoute
   WorkSlugRoute: typeof WorkSlugRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/resume': {
+      id: '/api/resume'
+      path: '/api/resume'
+      fullPath: '/api/resume'
+      preLoaderRoute: typeof ApiResumeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work/$slug': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiResumeRoute: ApiResumeRoute,
   WorkSlugRoute: WorkSlugRoute,
 }
 export const routeTree = rootRouteImport
