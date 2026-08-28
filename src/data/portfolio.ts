@@ -131,8 +131,8 @@ export const stackGroups = [
 ];
 
 export const contact = {
-  email: "zidanahammed@gmail.com",
-  linkedin: "https://www.linkedin.com/in/zidan-ahammed",
-  github: "https://github.com/zidanahammed",
-  resume: "/resume.pdf",
+  email: "zidanahammed444@gmail.com",
+  linkedin: "https://www.linkedin.com/in/zidan-ahammed-6730a930b",
+  github: "https://github.com/zidan444",
+  resume: resumeAsset.url,
 };
