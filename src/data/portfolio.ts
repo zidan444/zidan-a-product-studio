@@ -2,6 +2,7 @@ import gscopePrimary from "@/assets/gscope-primary.jpg";
 import gscopeSecondary from "@/assets/gscope-secondary.jpg";
 import projectBlog from "@/assets/project-blog.jpg";
 import projectChat from "@/assets/project-chat.jpg";
+import resumeAsset from "@/assets/resume.pdf.asset.json";
 
 export type Project = {
   slug: string;
@@ -130,8 +131,8 @@ export const stackGroups = [
 ];
 
 export const contact = {
-  email: "zidanahammed@gmail.com",
-  linkedin: "https://www.linkedin.com/in/zidan-ahammed",
-  github: "https://github.com/zidanahammed",
-  resume: "/resume.pdf",
+  email: "zidanahammed444@gmail.com",
+  linkedin: "https://www.linkedin.com/in/zidan-ahammed-6730a930b",
+  github: "https://github.com/zidan444",
+  resume: resumeAsset.url,
 };

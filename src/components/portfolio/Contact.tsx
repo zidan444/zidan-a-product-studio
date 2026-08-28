@@ -4,9 +4,12 @@ import { contact } from "@/data/portfolio";
 import { MaskedLines, Reveal } from "./Reveal";
 import { Section, SectionHeading } from "./SectionHeading";
 
+const linkedinHandle = contact.linkedin.split("/").pop() ?? "";
+const githubHandle = contact.github.split("/").pop() ?? "";
+
 const externalLinks = [
-  { label: "LinkedIn", value: "in/zidan-ahammed", href: contact.linkedin },
-  { label: "GitHub", value: "@zidanahammed", href: contact.github },
+  { label: "LinkedIn", value: `in/${linkedinHandle}`, href: contact.linkedin },
+  { label: "GitHub", value: `@${githubHandle}`, href: contact.github },
   { label: "Resume", value: "Download PDF", href: contact.resume },
 ];
 
