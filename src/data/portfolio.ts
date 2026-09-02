@@ -1,7 +1,7 @@
-import gscopePrimary from "@/assets/gscope-primary.jpg";
-import gscopeSecondary from "@/assets/gscope-secondary.jpg";
-import projectBlog from "@/assets/project-blog.jpg";
-import projectChat from "@/assets/project-chat.jpg";
+import gscopePrimary from "@/assets/healthcare entire ecosystem.png";
+import gscopeSecondary from "@/assets/admin dashboard.png";
+import projectBlog from "@/assets/blog app .png";
+import projectChat from "@/assets/chatapp.png";
 import resumeAsset from "@/assets/resume.pdf.asset.json";
 
 export type Project = {
@@ -35,9 +35,10 @@ export const projects: Project[] = [
       "A multi-application healthcare ecosystem connecting doctors, hospitals, pharmacies and ambulance services across mobile and web.",
     image: gscopePrimary,
     imageAlt:
-      "Layered GScope healthcare mobile application interfaces floating in dark space",
+      "GScope Healthcare Ecosystem interface displaying hospital command dashboard, patient appointments, pharmacy inventory, and ambulance dispatch map",
     secondaryImage: gscopeSecondary,
-    secondaryImageAlt: "Dark hospital administration dashboard interface with data tables",
+    secondaryImageAlt:
+      "GScope Admin operational intelligence dashboard showing revenue analytics, active orders, and patient registrations",
     stack: ["Angular", "Ionic", "Laravel", "Firebase", "REST APIs"],
     product:
       "GScope is not a single app. It is a connected set of healthcare products, each serving a different role in the same care flow, sharing one backend and one design language.",
@@ -70,7 +71,7 @@ export const projects: Project[] = [
     summary:
       "A full-stack publishing application built to work through API design, data modelling and authenticated content flows end to end.",
     image: projectBlog,
-    imageAlt: "Abstract layered article interfaces connected to an API node diagram",
+    imageAlt: "Full-stack blog application interface showing articles, post editor, and publishing dashboard",
     stack: ["MongoDB", "Express.js", "Node.js", "React"],
     product:
       "A writing and publishing surface backed by a REST API — posts, authors and content state handled from database schema through to interface.",
@@ -95,7 +96,7 @@ export const projects: Project[] = [
     summary:
       "A socket-driven messaging application focused on live connection state, authentication and secure credential handling.",
     image: projectChat,
-    imageAlt: "Abstract network of glowing message bubbles connected by thin green lines",
+    imageAlt: "Real-time chat application interface featuring live messaging, conversation list, and online status",
     stack: ["React", "Node.js", "Socket.io", "JWT", "bcrypt", "MongoDB"],
     product:
       "Messaging where the interesting problem is not the UI but the connection: events, rooms, reconnects and identity across sockets.",
@@ -123,11 +124,40 @@ export const sections = [
   { id: "contact", index: "06", label: "Contact" },
 ];
 
+export const experiences = [
+  {
+    company: "Dockcode Infotech",
+    role: ["MEAN Stack", "Developer", "Intern"],
+    date: "Mar 2026 – Jun 2026",
+    description: "Production work on the GScope healthcare ecosystem — the mobile applications and the admin platform behind them.",
+    responsibilities: [
+      "Built Ionic/Angular mobile applications across the GScope healthcare platform",
+      "Implemented appointment, consultation and prescription UI workflows",
+      "Integrated Laravel REST APIs into mobile and web application flows",
+      "Integrated Firebase authentication (OTP) and real-time services",
+      "Investigated and resolved Android-specific production bugs",
+      "Prepared and tested production Android builds",
+    ]
+  },
+  {
+    company: "Avodha",
+    role: ["MERN Stack", "Developer", "Trainee"],
+    date: "May 2025 – Nov 2025",
+    description: "Full-stack development building robust web applications and real-time platforms.",
+    responsibilities: [
+      "Built full-stack web applications using React, Node.js, Express and MongoDB",
+      "Built a real-time messaging platform with Socket.io and JWT/bcrypt authentication",
+      "Developed a role-based content management system",
+      "Implemented REST API design and protected route patterns",
+    ]
+  }
+];
+
 export const stackGroups = [
-  { label: "Frontend", items: ["React", "Angular", "Ionic", "TypeScript", "Tailwind CSS"] },
-  { label: "Backend", items: ["Node.js", "Express.js", "Laravel"] },
-  { label: "Data", items: ["MongoDB", "Firebase", "MySQL"] },
-  { label: "Other", items: ["REST APIs", "Socket.io", "JWT", "Git"] },
+  { label: "Frontend", items: ["Angular", "React", "Ionic", "TypeScript"] },
+  { label: "Backend", items: ["Node.js", "Express", "Laravel"] },
+  { label: "Data & Services", items: ["MongoDB", "Firebase"] },
+  { label: "Mobile & Delivery", items: ["Capacitor", "Android", "Render", "Git"] },
 ];
 
 export const contact = {

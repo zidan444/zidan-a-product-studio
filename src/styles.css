@@ -199,14 +199,28 @@
   position: relative;
 }
 
-/* Film-grain texture overlay — static, cheap, fixed over everything */
+@keyframes noise {
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -5% -10%; }
+  20% { background-position: -15% 5%; }
+  30% { background-position: 7% -25%; }
+  40% { background-position: -5% 25%; }
+  50% { background-position: -15% 10%; }
+  60% { background-position: 15% 0%; }
+  70% { background-position: 0% 15%; }
+  80% { background-position: 3% 35%; }
+  90% { background-position: -10% 10%; }
+}
+
+/* Film-grain texture overlay — animated with steps for cinematic feel */
 .grain-overlay {
   position: fixed;
   inset: 0;
   z-index: 55;
   pointer-events: none;
-  opacity: 0.05;
+  opacity: 0.08;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: noise 0.5s steps(2) infinite;
 }
 
 /* Hero per-letter entrance */
@@ -246,16 +260,16 @@
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(24px) scale(0.97);
   transition:
-    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .reveal[data-visible="true"] {
   opacity: 1;
-  transform: none;
+  transform: translateY(0) scale(1);
 }
 
 .mask-line {
@@ -285,6 +299,20 @@
 
 .atmosphere {
   animation: drift 32s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+  will-change: transform;
 }
 
 @keyframes tick {
@@ -326,7 +354,7 @@
    stays smooth; heavy ambient loops are switched off entirely. */
 @media (max-width: 767px), (hover: none) and (pointer: coarse) {
   .reveal {
-    transform: translateY(16px);
+    transform: translateY(12px) scale(0.99);
     transition-duration: 0.5s;
     will-change: auto;
   }
@@ -340,13 +368,47 @@
     transform: scale(1.06);
   }
 
+  .grain-overlay {
+    animation: none;
+  }
+
   .tick {
     animation-duration: 3.4s;
   }
+}
 
-  * {
-    background-attachment: scroll !important;
-  }
+/* Cinematic Hover Dimming — when any project image is hovered, dim the others */
+#work:has(.project-media:hover) .work-item:not(:has(.project-media:hover)) {
+  opacity: 0.25;
+  filter: blur(2px) grayscale(60%);
+}
+
+.work-item {
+  transition: opacity 0.6s ease, filter 0.6s ease;
+}
+
+/* View Transition API */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+::view-transition-old(root) {
+  animation-name: fade-out;
+}
+::view-transition-new(root) {
+  animation-name: fade-in;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(1.02); }
 }
 
 html {

@@ -80,26 +80,28 @@ export function IndexNav() {
                 <a
                   href={`#${s.id}`}
                   aria-current={isActive ? "true" : undefined}
-                  className="group/item flex items-center justify-end gap-3 py-1"
+                  className="group/item relative flex items-center justify-end py-1"
                 >
                   <span
                     className={cn(
-                      "meta translate-x-1 opacity-0 transition-all duration-500 group-hover/nav:translate-x-0 group-hover/nav:opacity-100",
+                      "absolute right-full mr-4 meta whitespace-nowrap translate-x-1 opacity-0 transition-all duration-500 group-hover/nav:translate-x-0 group-hover/nav:opacity-100",
                       isActive && "translate-x-0 text-foreground opacity-100",
                     )}
                   >
                     {s.label}
                   </span>
-                  <span className="meta w-6 text-right transition-colors duration-300 group-hover/item:text-foreground">
-                    {s.index}
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className={cn(
-                      "h-px bg-border transition-all duration-500 group-hover/item:bg-foreground",
-                      isActive ? "w-10 bg-primary group-hover/item:bg-primary" : "w-4",
-                    )}
-                  />
+                  <div className="flex items-center gap-3">
+                    <span className="meta w-6 text-right transition-colors duration-300 group-hover/item:text-foreground">
+                      {s.index}
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "h-px bg-border transition-all duration-500 group-hover/item:bg-foreground",
+                        isActive ? "w-10 bg-primary group-hover/item:bg-primary" : "w-4",
+                      )}
+                    />
+                  </div>
                 </a>
               </li>
             );

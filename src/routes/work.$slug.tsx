@@ -48,6 +48,7 @@ function CaseStudyMissing() {
 function CaseStudy() {
   const { project } = Route.useLoaderData();
   const next = projects[(projects.findIndex((p) => p.slug === project.slug) + 1) % projects.length];
+  const isGscope = project.slug === "gscope";
 
   return (
     <>
@@ -89,7 +90,9 @@ function CaseStudy() {
             width={1440}
             height={1088}
             className="aspect-[4/3] w-full sm:aspect-[16/9]"
-            cursorLabel=""
+            cursorLabel="Expand"
+            allowExpand
+            style={{ viewTransitionName: `project-image-${project.slug}` }}
           />
         </Reveal>
 
@@ -116,7 +119,11 @@ function CaseStudy() {
             </Chapter>
           )}
 
-          <Chapter step={project.surfaces ? "03" : "02"} label="Role" className="md:col-span-7">
+          <Chapter
+            step={project.surfaces ? "03" : "02"}
+            label={isGscope ? "My Contribution" : "Role"}
+            className="md:col-span-7"
+          >
             <ul className="space-y-5">
               {project.role.map((r) => (
                 <li key={r} className="flex gap-4 text-base leading-relaxed text-muted-foreground">
@@ -150,10 +157,14 @@ function CaseStudy() {
               width={1200}
               height={900}
               className="aspect-[4/3] w-full sm:aspect-[16/9]"
-              cursorLabel=""
+              cursorLabel="Expand"
+              allowExpand
             />
           </Reveal>
         )}
+
+        {/* GScope-only deep dive — My Contribution detail + technical case study */}
+        {isGscope && <GscopeDeepDive />}
 
         {next && (
           <Reveal className="shell mt-28 md:mt-40">
@@ -168,6 +179,107 @@ function CaseStudy() {
       </main>
       <Footer />
     </>
+  );
+}
+
+function GscopeDeepDive() {
+  const flowSteps = [
+    "Authentication",
+    "reCAPTCHA",
+    "Android lifecycle",
+    "Keyboard / input",
+    "Angular state",
+    "Recovery",
+  ];
+
+  const contributions = [
+    "Built and maintained Ionic/Angular mobile applications",
+    "Implemented appointment and consultation workflows",
+    "Worked on prescription workflows and product integrations",
+    "Integrated Laravel APIs and Firebase services",
+    "Investigated and fixed Android-specific production issues",
+    "Prepared and tested production Android builds",
+  ];
+
+  return (
+    <div className="shell mt-24 md:mt-36 space-y-20 md:space-y-28">
+
+      {/* My Contribution — detailed */}
+      <Reveal>
+        <div className="flex items-center gap-4">
+          <span className="meta text-primary">05</span>
+          <span className="h-px w-8 bg-border" aria-hidden="true" />
+          <span className="meta">My Contribution</span>
+        </div>
+        <ul className="mt-8 grid border-t border-border">
+          {contributions.map((item, i) => (
+            <li
+              key={i}
+              className="grid grid-cols-[3rem_minmax(0,1fr)] items-baseline gap-4 border-b border-border py-5 md:py-6"
+            >
+              <span className="meta text-primary">{String(i + 1).padStart(2, "0")}</span>
+              <span className="text-base leading-snug text-foreground/85 md:text-lg">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
+
+      {/* Technical case study */}
+      <div>
+        <Reveal>
+          <div className="flex items-center gap-4">
+            <span className="meta text-primary">06</span>
+            <span className="h-px w-8 bg-border" aria-hidden="true" />
+            <span className="meta">A Real Production Problem</span>
+          </div>
+        </Reveal>
+
+        {/* Flow sequence */}
+        <Reveal className="mt-10" delay={60}>
+          <div className="flex flex-wrap items-center gap-y-3">
+            {flowSteps.map((step, i) => (
+              <div key={step} className="flex items-center">
+                <span className="meta rounded border border-border px-3 py-2 text-foreground/90">
+                  {step}
+                </span>
+                {i < flowSteps.length - 1 && (
+                  <span className="meta mx-2 text-muted-foreground" aria-hidden="true">
+                    →
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        {/* Three columns */}
+        <div className="mt-10 grid gap-0 border-t border-border md:grid-cols-3">
+          {[
+            {
+              label: "Problem",
+              body: "Authentication and OTP input behaved inconsistently across Android devices after the reCAPTCHA flow. The issue surfaced in production, not in the development environment.",
+            },
+            {
+              label: "Investigation",
+              body: "The issue involved Android activity lifecycle behavior, keyboard state changes affecting the native WebView, native input handling differences, and Angular's change detection falling out of sync after native events.",
+            },
+            {
+              label: "Solution",
+              body: "Implemented recovery and cleanup logic across the authentication flow. Added native-to-Angular input bridging, explicit change detection triggers, polling and fallback behavior for OTP state, and Android-specific configuration adjustments.",
+            },
+          ].map((block, i) => (
+            <Reveal
+              key={block.label}
+              delay={i * 80}
+              className="border-b border-border py-8 md:border-b-0 md:border-r md:border-border md:pr-8 md:last:border-r-0 md:last:pl-8 md:[&:nth-child(2)]:px-8"
+            >
+              <p className="meta text-primary">{block.label}</p>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{block.body}</p>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 

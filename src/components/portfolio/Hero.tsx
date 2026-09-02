@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import heroAtmosphere from "@/assets/hero-atmosphere.jpg";
+import heroAtmosphere from "@/assets/hero sec.png";
 import { useLightMotion } from "@/hooks/use-light-motion";
 
 /**
@@ -92,22 +92,18 @@ export function Hero() {
       <div className="shell relative z-10 flex flex-1 flex-col pt-7 pb-24 md:pt-10">
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4">
           <span className="meta text-foreground">Zidan Ahammed</span>
-          <span className="meta flex items-center gap-2">
-            <span className="tick inline-block size-1.5 rounded-full bg-primary" />
-            Open to work
-          </span>
         </div>
 
         <div className="flex flex-1 flex-col justify-center py-16 md:py-20">
           <HeroTitle
             className="display-xl uppercase"
-            lines={["I build", "digital", "products."]}
+            lines={["Beyond", "the", "interface."]}
             lightMotion={lightMotion}
           />
           <div className="mt-8 grid gap-8 md:mt-14 md:grid-cols-12 md:items-end">
             <p className="max-w-md text-balance text-base leading-relaxed text-muted-foreground md:col-span-5 md:col-start-1">
-              Full-stack developer working across interfaces, APIs and mobile
-              applications — shipped in production healthcare software.
+              Full-stack developer who shipped production software to real users —
+              building interfaces, APIs and mobile apps for a connected healthcare ecosystem.
             </p>
             <div className="flex flex-wrap gap-x-6 gap-y-2 md:col-span-5 md:col-start-8 md:justify-end">
               {["React", "Node", "Angular", "Ionic"].map((t) => (

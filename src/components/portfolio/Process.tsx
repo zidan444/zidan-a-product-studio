@@ -2,10 +2,26 @@ import { Reveal } from "./Reveal";
 import { Section, SectionHeading } from "./SectionHeading";
 
 const steps = [
-  { n: "01", title: "Understand", body: "Read the product and the user flow before writing anything." },
-  { n: "02", title: "Build", body: "Turn requirements into working interfaces and systems." },
-  { n: "03", title: "Refine", body: "Fix edge cases, responsiveness and interaction detail." },
-  { n: "04", title: "Ship", body: "Build, test and deliver something production-ready." },
+  {
+    n: "01",
+    title: "Understand",
+    body: "I read the requirements and map the user flow before writing a single component. No guessing what the product should do.",
+  },
+  {
+    n: "02",
+    title: "Build",
+    body: "I build feature-by-feature with live state wired in from the start — no static mockups that throw away work.",
+  },
+  {
+    n: "03",
+    title: "Refine",
+    body: "I hunt edge cases: empty states, error boundaries, every device width. The 80% build is never the finished product.",
+  },
+  {
+    n: "04",
+    title: "Ship",
+    body: "I test on real Android devices before handoff. Production means working in the field, not just in the browser.",
+  },
 ];
 
 export function Process() {

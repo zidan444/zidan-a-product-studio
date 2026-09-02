@@ -7,6 +7,8 @@ import { Experience } from "@/components/portfolio/Experience";
 import { Stack } from "@/components/portfolio/Stack";
 import { Process } from "@/components/portfolio/Process";
 import { Contact } from "@/components/portfolio/Contact";
+import { CallToAction } from "@/components/portfolio/CallToAction";
+import { Marquee } from "@/components/portfolio/Marquee";
 import { Footer } from "@/components/portfolio/Footer";
 
 const title = "Zidan Ahammed — Full-Stack Developer";
@@ -47,6 +49,8 @@ function Index() {
         <Process />
         <Contact />
       </main>
+      <CallToAction />
+      <Marquee />
       <Footer />
     </>
   );

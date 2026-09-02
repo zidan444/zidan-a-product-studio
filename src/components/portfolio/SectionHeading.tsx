@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
+import { DecodeText } from "./DecodeText";
 
 export function SectionHeading({
   index,
@@ -13,12 +14,13 @@ export function SectionHeading({
 }) {
   return (
     <Reveal className={cn("flex items-center gap-4", className)}>
-      <span className="meta text-primary">{index}</span>
+      <DecodeText text={index} className="meta text-primary min-w-[2ch] inline-block" />
       <span className="h-px w-8 shrink-0 bg-border sm:w-14" aria-hidden="true" />
-      <span className="meta">{label}</span>
+      <DecodeText text={label} className="meta" />
     </Reveal>
   );
 }
+
 
 export function Section({
   id,
