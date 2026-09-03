@@ -85,7 +85,7 @@ export function Hero() {
               : { transform: `translate3d(0, ${offset * 0.14}px, 0)` }
           }
         />
-        <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_70%_20%,transparent,var(--background)_78%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_160%_100%_at_60%_-10%,transparent,var(--background)_70%)] sm:bg-[radial-gradient(120%_90%_at_70%_20%,transparent,var(--background)_78%)]" />
         <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-background to-transparent" />
       </div>
 
@@ -100,8 +100,8 @@ export function Hero() {
             lines={["Beyond", "the", "interface."]}
             lightMotion={lightMotion}
           />
-          <div className="mt-8 grid gap-8 md:mt-14 md:grid-cols-12 md:items-end">
-            <p className="max-w-md text-balance text-base leading-relaxed text-muted-foreground md:col-span-5 md:col-start-1">
+          <div className="mt-8 grid gap-6 md:mt-14 md:grid-cols-12 md:items-end">
+            <p className="max-w-md text-balance text-sm leading-relaxed text-muted-foreground sm:text-base md:col-span-5 md:col-start-1">
               Full-stack developer who shipped production software to real users —
               building interfaces, APIs and mobile apps for a connected healthcare ecosystem.
             </p>
@@ -115,11 +115,21 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hairline-t grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 pt-4">
+        <div className="hairline-t flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pt-4">
           <span className="meta">Full-Stack Developer · Web & Mobile</span>
-          <a href="#intro" className="meta transition-colors hover:text-foreground">
-            Scroll ↓
-          </a>
+          <div className="flex items-center gap-6">
+            <a
+              href="/api/resume"
+              target="_blank"
+              rel="noreferrer"
+              className="meta transition-colors hover:text-foreground"
+            >
+              Resume ↓
+            </a>
+            <a href="#intro" className="meta transition-colors hover:text-foreground">
+              Scroll ↓
+            </a>
+          </div>
         </div>
       </div>
     </header>

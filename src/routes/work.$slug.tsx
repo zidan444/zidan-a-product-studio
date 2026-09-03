@@ -62,17 +62,17 @@ function CaseStudy() {
           </div>
         </div>
 
-        <header className="shell pt-20 pb-14 md:pt-32 md:pb-24">
+        <header className="shell pt-16 pb-12 md:pt-32 md:pb-24">
           <p className="meta text-primary">
             {project.context} · {project.year}
           </p>
-          <MaskedLines className="display-lg mt-5 uppercase" lines={[project.title]} />
-          <div className="mt-10 grid gap-8 md:grid-cols-12">
-            <Reveal className="md:col-span-6">
-              <p className="text-lg leading-relaxed text-foreground/90">{project.summary}</p>
+          <MaskedLines className="display-lg mt-4 uppercase" lines={[project.title]} />
+          <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-12">
+            <Reveal className="md:col-span-7">
+              <p className="text-base leading-relaxed text-foreground/90 sm:text-lg">{project.summary}</p>
             </Reveal>
             <Reveal className="md:col-span-4 md:col-start-9" delay={120}>
-              <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              <ul className="flex flex-wrap gap-x-4 gap-y-2 sm:gap-x-5">
                 {project.stack.map((s) => (
                   <li key={s} className="meta">
                     {s}
@@ -87,8 +87,8 @@ function CaseStudy() {
           <ProjectMedia
             src={project.image}
             alt={project.imageAlt}
-            width={1440}
-            height={1088}
+            width={1672}
+            height={941}
             className="aspect-[4/3] w-full sm:aspect-[16/9]"
             cursorLabel="Expand"
             allowExpand
@@ -96,7 +96,7 @@ function CaseStudy() {
           />
         </Reveal>
 
-        <div className="shell mt-24 grid gap-16 md:mt-36 md:grid-cols-12">
+        <div className="shell mt-16 grid gap-12 md:mt-28 md:grid-cols-12 md:gap-16">
           <Chapter step="01" label="Product" className="md:col-span-12">
             <p className="max-w-2xl text-lg leading-relaxed text-foreground/90">
               {project.product}
@@ -154,8 +154,8 @@ function CaseStudy() {
             <ProjectMedia
               src={project.secondaryImage}
               alt={project.secondaryImageAlt ?? ""}
-              width={1200}
-              height={900}
+              width={1920}
+              height={1080}
               className="aspect-[4/3] w-full sm:aspect-[16/9]"
               cursorLabel="Expand"
               allowExpand
@@ -253,7 +253,7 @@ function GscopeDeepDive() {
         </Reveal>
 
         {/* Three columns */}
-        <div className="mt-10 grid gap-0 border-t border-border md:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-0 border-t border-border sm:grid-cols-3">
           {[
             {
               label: "Problem",

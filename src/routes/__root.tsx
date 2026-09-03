@@ -16,19 +16,19 @@ import { ScrollProgress } from "@/components/portfolio/ScrollProgress";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <h1 className="display-xl text-primary">404</h1>
+        <h2 className="display-md mt-4 text-foreground">Page not found</h2>
+        <p className="meta mt-6 text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
         </p>
-        <div className="mt-6">
+        <div className="mt-10">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="group inline-flex items-center gap-2 border border-border px-7 py-4 meta text-foreground transition-all duration-300 hover:border-primary/60 hover:text-primary"
           >
-            Go home
+            ← Back to Home
           </Link>
         </div>
       </div>
@@ -88,7 +88,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "Zidan Ahammed" },
       { name: "theme-color", content: "#111112" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/og-image.png" },
     ],
     links: [
       {
@@ -103,6 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "alternate icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "canonical", href: "https://zidanahammed.com" },
     ],
   }),
 

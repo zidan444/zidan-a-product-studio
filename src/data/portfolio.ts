@@ -1,5 +1,5 @@
-import gscopePrimary from "@/assets/healthcare entire ecosystem.png";
-import gscopeSecondary from "@/assets/admin dashboard.png";
+import gscopePrimary from "@/assets/resize platform.png";
+import gscopeSecondary from "@/assets/secondary resize.png";
 import projectBlog from "@/assets/blog app .png";
 import projectChat from "@/assets/chatapp.png";
 import resumeAsset from "@/assets/resume.pdf.asset.json";
@@ -36,9 +36,6 @@ export const projects: Project[] = [
     image: gscopePrimary,
     imageAlt:
       "GScope Healthcare Ecosystem interface displaying hospital command dashboard, patient appointments, pharmacy inventory, and ambulance dispatch map",
-    secondaryImage: gscopeSecondary,
-    secondaryImageAlt:
-      "GScope Admin operational intelligence dashboard showing revenue analytics, active orders, and patient registrations",
     stack: ["Angular", "Ionic", "Laravel", "Firebase", "REST APIs"],
     product:
       "GScope is not a single app. It is a connected set of healthcare products, each serving a different role in the same care flow, sharing one backend and one design language.",
@@ -62,8 +59,32 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "blog-platform",
+    slug: "gscope-admin",
     index: "02",
+    title: "GScope Admin Platform",
+    kind: "professional",
+    year: "Dockcode Infotech",
+    context: "Operational Dashboard",
+    summary:
+      "Operational intelligence and command dashboard for healthcare administration.",
+    image: gscopeSecondary,
+    imageAlt:
+      "GScope Admin operational intelligence dashboard showing revenue analytics, active orders, and patient registrations",
+    stack: ["Laravel", "Angular", "REST APIs"],
+    product:
+      "The central nervous system of the GScope ecosystem, allowing administrators to monitor hospital intake, ambulance dispatch, and pharmacy inventory in real-time.",
+    role: [
+      "Developed web-based operational dashboards and data tables.",
+      "Integrated complex Laravel backend APIs for real-time monitoring.",
+    ],
+    features: [
+      "Real-time operational metrics and charts",
+      "Role-based access control for different healthcare providers",
+    ],
+  },
+  {
+    slug: "blog-platform",
+    index: "03",
     title: "Blog Platform",
     kind: "personal",
     year: "Personal",
@@ -88,7 +109,7 @@ export const projects: Project[] = [
   },
   {
     slug: "realtime-chat",
-    index: "03",
+    index: "04",
     title: "Real-Time Chat",
     kind: "personal",
     year: "Personal",
@@ -156,7 +177,7 @@ export const experiences = [
 export const stackGroups = [
   { label: "Frontend", items: ["Angular", "React", "Ionic", "TypeScript"] },
   { label: "Backend", items: ["Node.js", "Express", "Laravel"] },
-  { label: "Data & Services", items: ["MongoDB", "Firebase"] },
+  { label: "Data & Services", items: ["MongoDB", "Firebase", "AWS"] },
   { label: "Mobile & Delivery", items: ["Capacitor", "Android", "Render", "Git"] },
 ];
 

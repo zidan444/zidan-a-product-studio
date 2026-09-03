@@ -246,13 +246,15 @@
 @utility shell {
   width: 100%;
   margin-inline: auto;
-  padding-inline: clamp(1.15rem, 0.4rem + 3.2vw, 4.5rem);
+  /* Minimum 16px on 320px phones, grows to 72px on wide screens */
+  padding-inline: clamp(1rem, 0.3rem + 3.2vw, 4.5rem);
   max-width: 96rem;
 }
 
 /* Fluid vertical rhythm between sections */
 @utility section-y {
-  padding-block: clamp(4.5rem, 2rem + 9vw, 11rem);
+  /* Tighter on phones: starts at 3rem, grows to 11rem on large screens */
+  padding-block: clamp(3rem, 1.5rem + 7vw, 11rem);
 }
 
 
@@ -418,5 +420,24 @@ html {
 @media (max-width: 767px) {
   html {
     -webkit-text-size-adjust: 100%;
+  }
+}
+
+/* ── Extra-small phone fixes (≤ 430px) ── */
+@media (max-width: 430px) {
+  /* Prevent the secondary floating card from escaping the featured image area */
+  .secondary-media-float {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 80% !important;
+    margin-top: 1rem;
+  }
+
+  /* Give the contact channel value room to breathe on tiny screens */
+  .contact-value {
+    font-size: 1rem;
+    line-height: 1.4;
+    word-break: break-all;
   }
 }

@@ -19,7 +19,7 @@ export function Marquee() {
         {items.map((item, i) => (
           <span
             key={i}
-            className="display-md flex items-center whitespace-nowrap px-6 text-muted-foreground uppercase transition-colors hover:text-foreground"
+            className="font-display font-medium tracking-[-0.03em] text-[clamp(1.4rem,1rem+2vw,3.25rem)] flex items-center whitespace-nowrap px-6 text-muted-foreground uppercase transition-colors hover:text-foreground"
           >
             {item}
             <span className="text-primary mx-12 text-2xl">•</span>

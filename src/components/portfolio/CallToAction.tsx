@@ -9,7 +9,7 @@ export function CallToAction() {
           className="display-lg uppercase"
           lines={["Open to new roles.", "Let's talk."]}
         />
-        <div className="mt-10 flex flex-wrap items-center gap-6 md:mt-14">
+        <div className="mt-10 flex flex-wrap items-center gap-4 sm:gap-6 md:mt-14">
           <a
             href={`mailto:${contact.email}`}
             className="group inline-flex items-center gap-3 border border-primary bg-primary px-7 py-4 text-primary-foreground transition-all duration-300 hover:bg-transparent hover:text-primary meta"
@@ -24,6 +24,14 @@ export function CallToAction() {
             className="meta inline-flex items-center gap-2 border border-border px-7 py-4 text-foreground transition-all duration-300 hover:border-primary/60 hover:text-primary"
           >
             LinkedIn ↗
+          </a>
+          <a
+            href="/api/resume"
+            target="_blank"
+            rel="noreferrer"
+            className="meta inline-flex items-center gap-2 border border-border px-7 py-4 text-foreground transition-all duration-300 hover:border-primary/60 hover:text-primary"
+          >
+            Download Resume ↓
           </a>
         </div>
         <p className="meta mt-8 text-muted-foreground">

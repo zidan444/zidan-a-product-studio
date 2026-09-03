@@ -46,7 +46,7 @@ export function Contact() {
         lines={["Let's build", "something", "useful."]}
       />
 
-      <ul className="mt-16 grid border-t border-border md:mt-24">
+        <ul className="mt-12 grid border-t border-border md:mt-20">
         {channels.map((channel, i) => (
           <li key={channel.key} className="border-b border-border">
             <Reveal delay={i * 80}>
@@ -54,10 +54,10 @@ export function Contact() {
                 href={channel.href}
                 target={channel.key === "email" ? undefined : "_blank"}
                 rel="noreferrer"
-                className="group grid gap-4 py-5 transition-colors hover:bg-foreground/5 md:grid-cols-[10rem_minmax(0,1fr)_auto] md:items-center md:py-7 px-4 -mx-4 rounded-lg"
+                className="group -mx-4 grid gap-2 rounded-lg px-4 py-5 transition-colors hover:bg-foreground/5 sm:gap-4 md:grid-cols-[8rem_minmax(0,1fr)_auto] md:items-center md:py-7"
               >
                 <span className="meta">{channel.label}</span>
-                <span className="truncate text-xl md:text-2xl">{channel.value}</span>
+                <span className="contact-value min-w-0 truncate text-lg sm:text-xl md:text-2xl">{channel.value}</span>
                 <span className="meta flex items-center justify-end">
                   <span className="opacity-0 transition-all duration-300 group-hover:-translate-x-2 group-hover:opacity-100">
                     Open ↗
